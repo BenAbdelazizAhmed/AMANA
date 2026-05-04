@@ -1,5 +1,3 @@
-
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -28,9 +26,10 @@ type Category =
 
       <nav>
         <button routerLink="/accueil">الرئيسية</button>
-        <button routerLink="/catalogue">العروض</button>
-        <button class="active">المعدّات</button>
-        <button routerLink="/garanties">الثقة</button>
+        <button routerLink="/catalogue">عروض المواشي</button>
+        <button class="active" routerLink="/produits">معدات الفلاح</button>
+        <button routerLink="/conseils-fellah">نصائح للفلاح</button>
+        <button routerLink="/comment-ca-marche">كيفاش تخدم؟</button>
         <button routerLink="/contact">طلب رسمي</button>
       </nav>
 
@@ -41,22 +40,27 @@ type Category =
       <div class="heroText">
         <div class="badge">
           <span></span>
-          معدات تربية المواشي والبقر في تونس
+          معدات تربية المواشي في تونس
         </div>
 
         <h1>
-          معدّات تخدم الفلاح
-          <b>موش كان صور في موقع.</b>
+          لوازم ومعدّات للعلوش والبقر
+          <b>تطلبها حسب حاجتك والكمية.</b>
         </h1>
 
         <p>
-          معالف، مشارب، حواجز، Cornadis، معدات حلب، تخزين، نقل ورعاية.
-          تختار المعدّة، تشوف التفاصيل، وتبعث طلب رسمي قبل الشراء.
+          معالف، مشارب، حواجز، معدات بقر، نقل، تخزين ورعاية.
+          اختار المنتج، شوف التفاصيل، وبعدها ابعث طلب رسمي باش نأكدو معاك السعر والتوفر.
         </p>
 
         <div class="heroActions">
-          <button class="primary" (click)="scrollTo('products')">شوف المعدّات</button>
-          <button class="secondary" routerLink="/contact">نحب عرض خاص</button>
+          <button class="primary" (click)="scrollTo('products')">
+            شوف المنتجات
+          </button>
+
+          <button class="secondary" routerLink="/contact">
+            أطلب عرض حسب الكمية
+          </button>
         </div>
 
         <div class="heroStats">
@@ -97,14 +101,16 @@ type Category =
                 <small>السعر يتأكد بعد الطلب</small>
               </div>
 
-              <button (click)="openProduct(featured)">التفاصيل</button>
+              <button (click)="openProduct(featured)">
+                شوف التفاصيل
+              </button>
             </div>
           </div>
         </div>
 
         <div class="floatCard bottom">
-          <b>✅ Fournisseurs تونسة</b>
-          <span>حسب التوفر والمنطقة</span>
+          <b>✅ موردين محليين</b>
+          <span>التوفر حسب الولاية والكمية</span>
         </div>
       </div>
     </section>
@@ -112,22 +118,58 @@ type Category =
     <section class="trustStrip">
       <div>
         <b>🛠️ معدات عملية</b>
-        <span>مناسبة للمربي، الفلاح، الضيعة والتاجر.</span>
+        <span>مناسبة للفلاح، المربي، الضيعة والتاجر.</span>
       </div>
 
       <div>
-        <b>🐑 للعلوش</b>
+        <b>🐑 للعلوش والماعز</b>
         <span>معالف، مشارب، حواجز، نقل وتخزين.</span>
       </div>
 
       <div>
-        <b>🐄 للبقر</b>
+        <b>🐄 للبقر والضيعات</b>
         <span>Cornadis، حلب، مشارب، تنظيم ورعاية.</span>
       </div>
 
       <div>
-        <b>📩 طلب منظم</b>
-        <span>لا دفع مباشر. نراجعو التفاصيل قبل القرار.</span>
+        <b>📩 طلب واضح</b>
+        <span>تختار المنتج، تبعث الطلب، ونأكدو التفاصيل.</span>
+      </div>
+    </section>
+
+    <section class="beforeBuy">
+      <div class="sectionHead center">
+        <small>قبل ما تطلب</small>
+        <h2>اختار المعدّة حسب حاجتك، موش عشوائي.</h2>
+        <p>
+          باش نعاونك تختار صح، فكّر في نوع الحيوان، عدد الرؤوس، المساحة، والكمية المطلوبة.
+        </p>
+      </div>
+
+      <div class="beforeGrid">
+        <div>
+          <span>🐑</span>
+          <h3>نوع الحيوان</h3>
+          <p>علوش، نعجة، ماعز ولا بقر؟ كل نوع يلزمو معدات مناسبة.</p>
+        </div>
+
+        <div>
+          <span>🔢</span>
+          <h3>عدد الرؤوس</h3>
+          <p>الكمية تحدد حجم المعلف، المشرب، والحواجز اللازمة.</p>
+        </div>
+
+        <div>
+          <span>📍</span>
+          <h3>الولاية</h3>
+          <p>التوفر والتوصيل يتغير حسب المنطقة.</p>
+        </div>
+
+        <div>
+          <span>📦</span>
+          <h3>قطعة ولا جملة؟</h3>
+          <p>تنجم تطلب منتج واحد أو تجهيز كامل للضيعة.</p>
+        </div>
       </div>
     </section>
 
@@ -135,13 +177,15 @@ type Category =
       <div class="sectionHead">
         <div>
           <small>Catalogue équipements</small>
-          <h2>معدّات متاع كل ما يخصّ المواشي.</h2>
+          <h2>معدات واضحة حسب الاستعمال.</h2>
           <p>
-            فلتر حسب الحاجة: أكل، ماء، بقر، حماية، صحة، نقل وتخزين.
+            اختار الصنف، شوف المنتجات، وبعدها ابعث طلب باش نأكدو السعر والتوفر.
           </p>
         </div>
 
-        <button class="darkBtn" routerLink="/contact">أطلب منتج معيّن</button>
+        <button class="darkBtn" routerLink="/contact">
+          إسأل على منتج موش موجود
+        </button>
       </div>
 
       <div class="filters">
@@ -179,7 +223,9 @@ type Category =
                 <b>من {{ p.price }} د.ت</b>
               </div>
 
-              <button (click)="openProduct(p)">شوف</button>
+              <button (click)="openProduct(p)">
+                شوف التفاصيل
+              </button>
             </div>
           </div>
         </article>
@@ -188,32 +234,34 @@ type Category =
 
     <section class="supplierSection">
       <div class="supplierText">
-        <small>فكرة الصفحة</small>
-        <h2>موش متجر عادي، صفحة طلب معدات ذكية.</h2>
+        <small>كيفاش يصير الطلب؟</small>
+        <h2>صفحة طلب معدات، موش دفع مباشر.</h2>
         <p>
-          الحريف يختار المعدّة، يحدّد الكمية والولاية، وبعدها يتم التواصل معاه
-          باش يتأكد السعر، التوفر، والتوصيل حسب fournisseur والمنطقة.
+          تختار المنتج، تحدد الكمية والولاية، وبعدها نتواصلو معاك باش نأكدو
+          السعر، التوفر، والتوصيل حسب المنطقة.
         </p>
 
-        <button routerLink="/contact">نحب نحط طلب</button>
+        <button routerLink="/contact">
+          أبعث طلب معدات
+        </button>
       </div>
 
       <div class="supplierGrid">
         <div>
           <span>01</span>
-          <b>اختار المعدّة</b>
-          <p>معلف، مشرب، Cornadis، حواجز، معدات حلب...</p>
+          <b>اختار المنتج</b>
+          <p>معلف، مشرب، حواجز، معدات حلب، نقل أو تخزين.</p>
         </div>
 
         <div>
           <span>02</span>
-          <b>حدّد الكمية</b>
-          <p>قطعة واحدة، كمية صغيرة، ولا طلب جملة.</p>
+          <b>حدّد الكمية والولاية</b>
+          <p>قطعة واحدة، كمية صغيرة، أو تجهيز كامل للضيعة.</p>
         </div>
 
         <div>
           <span>03</span>
-          <b>تأكيد العرض</b>
+          <b>نأكدو العرض</b>
           <p>نراجعو التوفر والسعر قبل أي التزام.</p>
         </div>
       </div>
@@ -221,8 +269,8 @@ type Category =
 
     <section class="why">
       <div class="sectionHead center">
-        <small>علاش الصفحة هذي قوية؟</small>
-        <h2>تخدم الفلاح والحريف في نفس الوقت.</h2>
+        <small>علاش الصفحة مفيدة؟</small>
+        <h2>تخدم اللي يربي واللي يجهز ضيعة.</h2>
       </div>
 
       <div class="whyGrid">
@@ -248,15 +296,17 @@ type Category =
 
     <section class="bulk">
       <div>
-        <small>طلب جملة</small>
+        <small>طلب تجهيز</small>
         <h2>عندك ضيعة وتحب تجهّزها؟</h2>
         <p>
-          أبعثلنا شنوة يلزمك: عدد المعالف، المشرب، الحواجز، نوع الحيوانات،
-          والولاية. نحضّرولك عرض منظم حسب التوفر.
+          أبعثلنا شنوّة يلزمك: عدد المعالف، المشرب، الحواجز، نوع الحيوانات،
+          الكمية والولاية. نحضّرولك عرض منظم حسب التوفر.
         </p>
       </div>
 
-      <button routerLink="/contact">أطلب عرض تجهيز</button>
+      <button routerLink="/contact">
+        أطلب عرض تجهيز
+      </button>
     </section>
 
     <section class="faq section">
@@ -272,13 +322,13 @@ type Category =
         </div>
 
         <div>
-          <h3>هل المنتجات موجودة في تونس؟</h3>
-          <p>الفكرة مبنية على معدات معروفة وموجودة عادة عند fournisseurs في تونس، والتوفر يتأكد بعد الطلب.</p>
+          <h3>هل يلزم ندفع من الموقع؟</h3>
+          <p>لا. تبعث طلب فقط، وبعدها يصير التأكيد معاك قبل أي التزام.</p>
         </div>
 
         <div>
-          <h3>هل نجم نطلب منتج موش موجود في الصفحة؟</h3>
-          <p>إي، تنجم تبعث طلب خاص ونشوفو إمكانية توفيره.</p>
+          <h3>هل نجم نطلب منتج موش موجود؟</h3>
+          <p>إي، ابعثلنا شنوّة تحب ونشوفو إمكانية توفيره.</p>
         </div>
       </div>
     </section>
@@ -288,7 +338,7 @@ type Category =
       <p>ابعث طلب رسمي، ونراجعو معاك السعر، الكمية، التوفر والتوصيل.</p>
 
       <div>
-        <button routerLink="/contact">قدّم طلب رسمي</button>
+        <button routerLink="/contact">أطلب هذا المنتج</button>
         <button class="ghost" routerLink="/accueil">رجوع للرئيسية</button>
       </div>
     </section>
@@ -304,16 +354,17 @@ type Category =
       <div>
         <h4>روابط</h4>
         <a routerLink="/accueil">الرئيسية</a>
-        <a routerLink="/catalogue">العروض</a>
+        <a routerLink="/catalogue">عروض المواشي</a>
+        <a routerLink="/conseils-fellah">نصائح للفلاح</a>
         <a routerLink="/contact">طلب رسمي</a>
       </div>
 
       <div>
         <h4>معدات</h4>
-        <a (click)="selectCategory('feeding')">أكل</a>
-        <a (click)="selectCategory('water')">ماء</a>
-        <a (click)="selectCategory('cattle')">بقر</a>
-        <a (click)="selectCategory('security')">حماية</a>
+        <a (click)="selectCategory('feeding')">أكل ومعالف</a>
+        <a (click)="selectCategory('water')">ماء ومشارب</a>
+        <a (click)="selectCategory('cattle')">معدات بقر</a>
+        <a (click)="selectCategory('security')">حماية وتنظيم</a>
       </div>
     </footer>
 
@@ -336,7 +387,7 @@ type Category =
             </div>
 
             <div>
-              <small>المصدر</small>
+              <small>التوفر</small>
               <b>{{ selectedProduct.supplier }}</b>
             </div>
           </div>
@@ -350,7 +401,9 @@ type Category =
             <small>السعر والتوفر يتأكدو بعد مراجعة الطلب</small>
           </div>
 
-          <button routerLink="/contact">أطلب هذا المنتج</button>
+          <button routerLink="/contact">
+            أطلب هذا المنتج
+          </button>
         </div>
       </div>
     </div>
@@ -421,9 +474,9 @@ type Category =
     nav button {
       background: transparent;
       color: #263d2e;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 950;
-      padding: 11px 14px;
+      padding: 11px 12px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
@@ -434,6 +487,7 @@ type Category =
       background: white;
       color: var(--green);
       box-shadow: 0 8px 20px rgba(20,55,35,.08);
+      transform: none;
     }
 
     button {
@@ -716,10 +770,49 @@ type Category =
       line-height: 1.6;
     }
 
+    .beforeBuy,
     .section {
       max-width: 1320px;
       margin: auto;
       padding: 80px 30px;
+    }
+
+    .beforeGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .beforeGrid div {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 14px 34px rgba(35,65,45,.08);
+      text-align: right;
+    }
+
+    .beforeGrid span {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: var(--cream);
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .beforeGrid h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .beforeGrid p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     .sectionHead {
@@ -734,6 +827,9 @@ type Category =
     .sectionHead.center {
       display: block;
       text-align: center;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     small {
@@ -1266,7 +1362,8 @@ type Category =
 
       .productsGrid,
       .whyGrid,
-      .faqGrid {
+      .faqGrid,
+      .beforeGrid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1349,12 +1446,14 @@ type Category =
       .productsGrid,
       .whyGrid,
       .faqGrid,
-      .footer {
+      .footer,
+      .beforeGrid {
         grid-template-columns: 1fr;
       }
 
       .section,
-      .why {
+      .why,
+      .beforeBuy {
         padding: 58px 18px;
       }
 
@@ -1402,11 +1501,11 @@ export class ProduitsComponent {
   selectedProduct: any = null;
 
   categories: { key: Category; label: string; icon: string }[] = [
-    { key: 'all', label: 'الكل', icon: '⭐' },
-    { key: 'feeding', label: 'أكل ومعالف', icon: '🌾' },
-    { key: 'water', label: 'ماء ومشارب', icon: '💧' },
-    { key: 'cattle', label: 'معدات البقر', icon: '🐄' },
-    { key: 'security', label: 'حماية وتنظيم', icon: '🛡️' },
+    { key: 'all', label: 'كل المنتجات', icon: '⭐' },
+    { key: 'feeding', label: 'معالف وأكل', icon: '🌾' },
+    { key: 'water', label: 'مشارب وماء', icon: '💧' },
+    { key: 'cattle', label: 'معدات بقر', icon: '🐄' },
+    { key: 'security', label: 'حواجز وحماية', icon: '🛡️' },
     { key: 'health', label: 'رعاية وصحة', icon: '💊' },
     { key: 'transport', label: 'نقل', icon: '🚚' },
     { key: 'storage', label: 'تخزين', icon: '📦' }
@@ -1416,38 +1515,38 @@ export class ProduitsComponent {
     {
       id: 1,
       category: 'feeding',
-      categoryLabel: 'أكل ومعالف',
+      categoryLabel: 'معالف وأكل',
       name: 'معلف حديد للعلوش والبقر',
       short: 'ينظم الأكل وينقص التبذير داخل الضيعة.',
       description: 'معلف حديد قوي يصلح للعلوش، النعاج والبقر. يساعد الفلاح على تنظيم الأكل، تقليل التبذير، وتسهيل الخدمة اليومية داخل الضيعة.',
       price: 180,
       badge: 'مطلوب برشا',
-      supplier: 'Fournisseur تونسي',
+      supplier: 'حسب التوفر',
       image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1200&q=80',
       features: ['للعلوش', 'للبقر', 'حديد', 'ينقص التبذير']
     },
     {
       id: 2,
       category: 'water',
-      categoryLabel: 'ماء ومشارب',
-      name: 'Abreuvoir أوتوماتيك',
+      categoryLabel: 'مشارب وماء',
+      name: 'مشرب ماء أوتوماتيك',
       short: 'مشرب ماء عملي للمواشي والبقر.',
       description: 'مشرب أوتوماتيك يساعد على توفير الماء بطريقة أنظف وأسهل. مناسب للعلوش، النعاج، الأبقار والضيعات الصغيرة والمتوسطة.',
       price: 95,
       badge: 'عملي',
-      supplier: 'متوفر حسب المنطقة',
+      supplier: 'حسب المنطقة',
       image: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=80',
       features: ['ماء نظيف', 'سهل التركيب', 'للضيعة', 'اقتصادي']
     },
     {
       id: 3,
       category: 'cattle',
-      categoryLabel: 'معدات البقر',
+      categoryLabel: 'معدات بقر',
       name: 'Cornadis للبقر',
       short: 'لتثبيت وتنظيم البقر وقت الأكل والرعاية.',
       description: 'Cornadis من أهم معدات تربية الأبقار. يساعد في تثبيت البقر وقت الأكل، الفحص، الرعاية، وتنظيم الإسطبل بطريقة احترافية.',
       price: 520,
-      badge: 'Bovin',
+      badge: 'للبقر',
       supplier: 'حسب الطلب',
       image: 'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1200&q=80',
       features: ['للبقر', 'إسطبل', 'احترافي', 'تنظيم']
@@ -1455,13 +1554,13 @@ export class ProduitsComponent {
     {
       id: 4,
       category: 'security',
-      categoryLabel: 'حماية وتنظيم',
+      categoryLabel: 'حواجز وحماية',
       name: 'سياج معدني للضيعة',
       short: 'يحمي المساحة وينظم حركة القطيع.',
       description: 'سياج معدني مناسب لتقسيم الضيعة، حماية المواشي، وتنظيم الحركة. يصلح للعلوش، الماعز، النعاج والبقر حسب النوع والحجم.',
       price: 260,
       badge: 'حماية',
-      supplier: 'Fournisseur محلي',
+      supplier: 'حسب المقاس',
       image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80',
       features: ['حماية', 'تقسيم', 'للضيعات', 'معدني']
     },
@@ -1474,7 +1573,7 @@ export class ProduitsComponent {
       description: 'Kit فيه أدوات أساسية تساعد المربي في المتابعة اليومية، التنظيف، والرعاية الأولية. مناسب للفلاحين والمربين الجدد.',
       price: 120,
       badge: 'رعاية',
-      supplier: 'متوفر عادة',
+      supplier: 'حسب التوفر',
       image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df7b?auto=format&fit=crop&w=1200&q=80',
       features: ['رعاية', 'متابعة', 'سهل الاستعمال', 'أساسي']
     },
@@ -1495,11 +1594,11 @@ export class ProduitsComponent {
       id: 7,
       category: 'transport',
       categoryLabel: 'نقل',
-      name: 'Cage نقل للحيوانات',
+      name: 'قفص نقل للحيوانات',
       short: 'لنقل العلوش أو الحيوانات الصغيرة بأمان.',
-      description: 'Cage نقل معدنية تساعد على نقل الحيوانات بطريقة منظمة وآمنة، خاصة بين الضيعات، الأسواق، أو عند الشراء والبيع.',
+      description: 'قفص نقل معدني يساعد على نقل الحيوانات بطريقة منظمة وآمنة، خاصة بين الضيعات، الأسواق، أو عند الشراء والبيع.',
       price: 340,
-      badge: 'Transport',
+      badge: 'نقل',
       supplier: 'حسب الحجم',
       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80',
       features: ['نقل', 'آمن', 'معدني', 'للعلوش']
@@ -1507,12 +1606,12 @@ export class ProduitsComponent {
     {
       id: 8,
       category: 'cattle',
-      categoryLabel: 'معدات البقر',
+      categoryLabel: 'معدات بقر',
       name: 'معدات حلب الأبقار',
       short: 'حلول للحلب وتنظيم إنتاج الحليب.',
       description: 'معدات حلب موجهة لمربي الأبقار، تساعد على تنظيم الحلب، تحسين النظافة، وربح الوقت في الضيعات الصغيرة والمتوسطة.',
       price: 980,
-      badge: 'Laitier',
+      badge: 'حليب',
       supplier: 'حسب التوفر',
       image: 'https://images.unsplash.com/photo-1594761051656-153faa2857fe?auto=format&fit=crop&w=1200&q=80',
       features: ['بقر حلوب', 'حليب', 'احترافي', 'ضيعات']
@@ -1525,49 +1624,10 @@ export class ProduitsComponent {
       short: 'يحافظ على العلف وينظم التخزين.',
       description: 'صندوق تخزين يحمي العلف من الرطوبة والتلف، ويساعد على تنظيم الأعلاف داخل الضيعة أو المخزن.',
       price: 210,
-      badge: 'Stockage',
-      supplier: 'Fournisseur تونسي',
+      badge: 'تخزين',
+      supplier: 'حسب التوفر',
       image: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1200&q=80',
       features: ['علف', 'تخزين', 'نظافة', 'حماية']
-    },
-    {
-      id: 10,
-      category: 'feeding',
-      categoryLabel: 'أكل ومعالف',
-      name: 'Râtelier علف للمواشي',
-      short: 'مناسب للتبن والعلف الجاف.',
-      description: 'Râtelier يساعد على تقديم التبن والعلف بطريقة منظمة، ينقص الضياع ويحافظ على نظافة مكان الأكل.',
-      price: 230,
-      badge: 'للتبن',
-      supplier: 'حسب الحجم',
-      image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80',
-      features: ['تبن', 'علف جاف', 'مواشي', 'عملي']
-    },
-    {
-      id: 11,
-      category: 'security',
-      categoryLabel: 'حماية وتنظيم',
-      name: 'بوابة معدنية للضيعة',
-      short: 'مدخل منظم وآمن للقطيع والآلات.',
-      description: 'بوابة معدنية تساعد على حماية المدخل وتنظيم دخول وخروج الحيوانات أو المعدات داخل الضيعة.',
-      price: 390,
-      badge: 'Sécurité',
-      supplier: 'حسب المقاس',
-      image: 'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&w=1200&q=80',
-      features: ['بوابة', 'حماية', 'معدنية', 'ضيعة']
-    },
-    {
-      id: 12,
-      category: 'health',
-      categoryLabel: 'رعاية وصحة',
-      name: 'ميزان وزن للمواشي',
-      short: 'لمتابعة نمو العلوش والبقر.',
-      description: 'ميزان يساعد على متابعة الوزن، تقييم النمو، وتنظيم البيع والشراء بطريقة أوضح.',
-      price: 650,
-      badge: 'Suivi',
-      supplier: 'حسب النوع',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-      features: ['وزن', 'متابعة', 'بيع وشراء', 'احترافي']
     }
   ];
 

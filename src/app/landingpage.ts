@@ -12,101 +12,71 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
   <div class="page" dir="rtl">
 
     <header class="navbar">
-      <div class="brand" (click)="scrollTo('home')">
+      <div class="brand" routerLink="/accueil">
         <img class="brandLogo" src="assets/a.png" alt="Amana logo">
       </div>
 
       <nav>
-        <button (click)="scrollTo('home')">الرئيسية</button>
-        <button routerLink="/catalogue">العروض</button>
-        <button routerLink="/comment-ca-marche">كيفاش تخدم؟</button>
-        <button routerLink="/conseils-fellah">نصائح للفلاح</button>
+        <button routerLink="/accueil">الرئيسية</button>
+        <button routerLink="/catalogue">شراء المواشي</button>
+        <button routerLink="/comment-ca-marche">كيفاش نخدمو؟</button>
+        <button routerLink="/conseils-fellah">نصائح</button>
         <button routerLink="/produits">المعدّات</button>
-        <button routerLink="/contact">طلب رسمي</button>
       </nav>
 
-      <div class="actions">
-        <button class="navSecondary" routerLink="/comment-ca-marche">إفهم الفكرة</button>
-        <button class="navPrimary" routerLink="/catalogue">شوف العروض</button>
-      </div>
+      <button class="navPrimary" routerLink="/contact">أطلب الآن</button>
     </header>
 
     <section id="home" class="hero">
       <div class="heroText">
         <div class="heroBadge">
           <span></span>
-          Amana — شراء المواشي بطريقة أوضح في تونس
+          Amana — شراء مواشي بطريقة واضحة
         </div>
 
         <h1>
-          إشري مواشي في تونس
-          <span>بوضوح، ثقة، وطلب رسمي.</span>
+          تحب تشري علوش، نعجة ولا بقرة؟
+          <span>شوف العرض وابعث طلبك.</span>
         </h1>
 
         <p>
-          علوش، نعجة، ماعز ولا بقرة: تشوف الصور، الوزن، العمر، المنطقة والسعر التقريبي.
-          تبعث طلب رسمي، وبعدها نأكدو معاك التفاصيل قبل أي التزام.
+          صور، وزن، عمر، منطقة وسعر تقريبي. إنت تختار العرض،
+          وبعدها نأكدو معاك التفاصيل قبل أي التزام.
         </p>
 
         <div class="heroActions">
           <button class="primaryBtn big" routerLink="/catalogue">
-            شوف العروض المتاحة
+            شوف المواشي للبيع
           </button>
 
           <button class="secondaryBtn big" routerLink="/comment-ca-marche">
-            كيفاش تخدم؟
-          </button>
-
-          <button class="secondaryBtn big" routerLink="/contact">
-            أطلب مساعدة
+            كيفاش يتم الشراء؟
           </button>
         </div>
 
-        <div class="quickChoice">
-          <button routerLink="/catalogue">🐑 بالكعبة</button>
-          <button routerLink="/catalogue">📦 بالجملة</button>
-          <button routerLink="/contact">👀 طلب زيارة</button>
-          <button routerLink="/conseils-fellah">📚 نصائح للفلاح</button>
-        </div>
-
-        <div class="proofLine">
-          <div>✅ صور ومواصفات واضحة</div>
-          <div>⚖️ وزن وسعر تقريبي</div>
-          <div>👨‍🌾 مصدر معروف</div>
-          <div>📩 لا دفع مباشر</div>
+        <div class="simpleChoices">
+          <button routerLink="/catalogue">🐑 نحب نشري كعبة</button>
+          <button routerLink="/contact">📦 نحب كمية</button>
+          <button routerLink="/contact">👀 نحب نسأل</button>
         </div>
       </div>
 
       <div class="heroVisual">
-        <div class="floatingCard top">
-          <b>👀 زيارة متاحة</b>
-          <span>حسب العرض والمنطقة</span>
-        </div>
-
-        <div class="floatingCard bottom">
-          <b>📦 جملة</b>
-          <span>عرض حسب الكمية</span>
-        </div>
-
         <div class="animalHeroCard">
           <img [src]="animals[0].image" alt="Animal">
 
           <div class="heroAnimalInfo">
-            <div class="animalStatus">
-              <span>عرض متاح</span>
-              <small>مختار من Amana</small>
-            </div>
-
+            <span class="pill">عرض متاح</span>
             <h3>{{ animals[0].name }}</h3>
             <p>{{ animals[0].weight }} · {{ animals[0].age }} · {{ animals[0].region }}</p>
 
             <div class="animalPrice">
               <div>
                 <b>من {{ animals[0].price }} د.ت</b>
-                <span>يتأكد بعد مراجعة الطلب</span>
+                <span>السعر يتأكد بعد الطلب</span>
               </div>
 
-              <button (click)="selectAnimal(animals[0])">التفاصيل</button>
+              <button (click)="selectAnimal(animals[0])">شوف العرض</button>
             </div>
           </div>
         </div>
@@ -114,54 +84,16 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
     </section>
 
     <section class="trustStrip">
-      <div><b>🐑 عروض مختارة</b><span>مواشي بالكعبة ولا بالجملة.</span></div>
-      <div><b>👀 زيارة قبل الشراء</b><span>حسب توفر العرض والمنطقة.</span></div>
-      <div><b>💰 أسعار واضحة</b><span>السعر كتقدير أولي قبل التأكيد.</span></div>
-      <div><b>📩 طلب منظم</b><span>تخلي معلوماتك ونراجعو التفاصيل.</span></div>
+      <div><b>📸 صور واضحة</b><span>باش تشوف الحيوان قبل الطلب.</span></div>
+      <div><b>⚖️ وزن وسعر</b><span>معلومات بسيطة ومفهومة.</span></div>
+      <div><b>📩 طلب رسمي</b><span>ما فماش دفع مباشر.</span></div>
+      <div><b>👨‍🌾 تواصل سهل</b><span>نأكدو التفاصيل معاك.</span></div>
     </section>
 
-    <section class="valueSection">
-      <div class="sectionTitle">
-        <small>علاش Amana؟</small>
-        <h2>موش إعلان وخلاص. تجربة شراء منظمة.</h2>
-        <p>
-          الهدف إنك ما تشريش على العمى: تشوف المعلومات، تقارن، تبعث طلب،
-          وبعدها يصير التأكيد حسب التوفر والمنطقة.
-        </p>
-      </div>
-
-      <div class="valueGrid">
-        <div>
-          <span>📸</span>
-          <h3>صور حقيقية</h3>
-          <p>كل عرض لازم يكون فيه صور واضحة للحيوان.</p>
-        </div>
-
-        <div>
-          <span>⚖️</span>
-          <h3>مواصفات مفهومة</h3>
-          <p>وزن، عمر، نوع، منطقة وسعر تقريبي.</p>
-        </div>
-
-        <div>
-          <span>👀</span>
-          <h3>زيارة ممكنة</h3>
-          <p>حسب المنطقة والتوفر، تنجم تطلب زيارة قبل القرار.</p>
-        </div>
-
-        <div>
-          <span>📩</span>
-          <h3>طلب رسمي</h3>
-          <p>ما فماش دفع مباشر. نراجعو التفاصيل قبل أي التزام.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="how" class="section">
+    <section class="section">
       <div class="sectionTitle">
         <small>كيفاش تخدم؟</small>
-        <h2>تشوف العرض، تبعث طلب، وبعدها تقرر.</h2>
-        <p>لا دفع مباشر. نراجعو التفاصيل معاك قبل أي قرار.</p>
+        <h2>3 خطوات بسيطة برشا.</h2>
       </div>
 
       <div class="steps">
@@ -178,9 +110,8 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       <div class="section inner">
         <div class="sectionHeader centerHeader">
           <div>
-            <small>اختار حسب حاجتك</small>
-            <h2>أنواع مختلفة في بلاصة واحدة.</h2>
-            <p>علوش، نعجة، ماعز، بقر، وطلبات جملة حسب التوفر.</p>
+            <small>اختار شنوة تحب</small>
+            <h2>مواشي بالكعبة ولا بالجملة.</h2>
           </div>
         </div>
 
@@ -189,7 +120,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
           <button routerLink="/catalogue">🐏 نعجة</button>
           <button routerLink="/catalogue">🐐 ماعز</button>
           <button routerLink="/catalogue">🐄 بقر</button>
-          <button routerLink="/catalogue">📦 جملة</button>
+          <button routerLink="/contact">📦 كمية</button>
         </div>
       </div>
     </section>
@@ -198,14 +129,12 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       <div class="section inner">
         <div class="sectionHeader">
           <div>
-            <small>العروض المتاحة</small>
-            <h2>قارن العروض بسهولة.</h2>
-            <p>صورة، وزن، عمر، منطقة وسعر تقريبي قبل إرسال الطلب.</p>
+            <small>عروض متاحة</small>
+            <h2>شوف أمثلة من العروض.</h2>
+            <p>الحريف يفهم بسرعة: صورة، وزن، عمر، منطقة وسعر تقريبي.</p>
           </div>
 
-          <button class="darkBtn" routerLink="/catalogue">
-            شوف كل العروض
-          </button>
+          <button class="darkBtn" routerLink="/catalogue">شوف كل العروض</button>
         </div>
 
         <div class="animals">
@@ -213,10 +142,6 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
             <div class="imgBox">
               <img [src]="a.image" [alt]="a.name">
               <span>{{ a.badge }}</span>
-
-              <button class="heart" [class.liked]="a.liked" (click)="toggleLike(a)">
-                {{ a.liked ? '♥' : '♡' }}
-              </button>
             </div>
 
             <div class="cardBody">
@@ -225,17 +150,15 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
               <div class="animalMiniInfo">
                 <div><span>الوزن</span><b>{{ a.weight }}</b></div>
                 <div><span>العمر</span><b>{{ a.age }}</b></div>
-                <div><span>السعر</span><b>من {{ a.price }} د.ت</b></div>
+                <div><span>السعر</span><b>{{ a.price }} د.ت</b></div>
               </div>
 
               <div class="statusLine">
                 <span>{{ a.region }}</span>
-                <small>قابل للتأكيد</small>
+                <small>يتأكد بعد الطلب</small>
               </div>
 
-              <button class="detailsBtn" (click)="selectAnimal(a)">
-                شوف التفاصيل
-              </button>
+              <button class="detailsBtn" (click)="selectAnimal(a)">شوف التفاصيل</button>
             </div>
           </article>
         </div>
@@ -244,171 +167,116 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
 
     <section class="educationMini">
       <div class="educationText">
-        <small>معلومة تفيدك</small>
-        <h2>مش كان بيع. زادة نعاونوا الفلاح يتعلّم.</h2>
+        <small>قيمة إضافية</small>
+        <h2>نعاونوا الفلاح زادة بالمعلومة.</h2>
         <p>
-          في صفحة النصائح تلقى معلومات على التغذية، النظافة، علامات المرض،
-          ووقتاش يلزم تتصل ببيطري.
+          نصائح بسيطة على التغذية، النظافة، علامات المرض، ووقتاش يلزم بيطري.
         </p>
 
-        <button class="primaryBtn" routerLink="/conseils-fellah">
-          شوف نصائح للفلاح
-        </button>
+        <button class="primaryBtn" routerLink="/conseils-fellah">شوف النصائح</button>
       </div>
 
       <div class="educationCards">
-        <div><b>🦠 أمراض شائعة</b><span>علامات الخطر وشنوّة تعمل أولًا.</span></div>
-        <div><b>🌾 تغذية</b><span>أخطاء العلف والماء وكيفاش تتجنبها.</span></div>
-        <div><b>🧼 نظافة</b><span>الرطوبة والاكتظاظ ومشاكل الحوافر.</span></div>
+        <div><b>🦠 أمراض</b><span>علامات الخطر.</span></div>
+        <div><b>🌾 تغذية</b><span>أخطاء لازم تتجنبها.</span></div>
+        <div><b>🛠️ معدات</b><span>لوازم تنجم تحتاجها.</span></div>
       </div>
     </section>
 
-    <section id="trust" class="section trustSection">
+    <section class="section trustSection">
       <div class="trustText">
-        <small>الأمان والثقة</small>
-        <h2>الثقة قبل الشراء.</h2>
-
+        <small>الثقة</small>
+        <h2>قبل ما تشري، لازم تفهم العرض.</h2>
         <p>
-          Amana تعتمد على عروض واضحة، معلومات أساسية، وطلب رسمي قبل أي التزام.
+          Amana تخلي الحريف يشوف المعلومات الأساسية قبل ما يبعث طلب.
         </p>
 
         <div class="trustList">
+          <div>✅ صورة واضحة للحيوان</div>
           <div>✅ وزن، عمر، منطقة وسعر تقريبي</div>
-          <div>✅ إمكانية طلب زيارة قبل الشراء</div>
-          <div>✅ لا يوجد دفع مباشر من الصفحة</div>
-          <div>✅ تأكيد التفاصيل قبل القرار</div>
+          <div>✅ طلب رسمي بدون دفع مباشر</div>
+          <div>✅ إمكانية سؤال أو طلب زيارة حسب التوفر</div>
         </div>
-
-        <button class="primaryBtn trustBtn" routerLink="/comment-ca-marche">
-          شوف كيفاش تخدم
-        </button>
       </div>
 
       <div class="trackingBox">
-        <h3>شنوّة يهم الحريف؟</h3>
+        <h3>شنوّة يعمل الحريف؟</h3>
 
         <div class="track">
-          <span>📸</span>
-          <div><b>صور واضحة</b><p>باش يعرف شنوّة يشري.</p></div>
-        </div>
-
-        <div class="track">
-          <span>⚖️</span>
-          <div><b>مواصفات</b><p>وزن، عمر، نوع ومنطقة.</p></div>
+          <span>1</span>
+          <div><b>يشوف العرض</b><p>صور ومعلومات بسيطة.</p></div>
         </div>
 
         <div class="track">
-          <span>📩</span>
-          <div><b>طلب رسمي</b><p>بدون دفع مباشر.</p></div>
+          <span>2</span>
+          <div><b>يبعث طلب</b><p>اسمو، تليفونو، الولاية.</p></div>
         </div>
 
-        <button class="whiteBtn" routerLink="/contact">
-          قدّم طلب
-        </button>
-      </div>
-    </section>
-
-    <section class="section bulkSection">
-      <div class="simText">
-        <small>للشراء بالجملة</small>
-        <h2>تحتاج كمية؟</h2>
-        <p>
-          قدّم طلب فيه النوع والكمية والمنطقة، ويتم إعداد عرض حسب التوفر.
-        </p>
-      </div>
-
-      <div class="bulkCard">
-        <div class="bulkIcon">📦</div>
-        <h3>طلب جملة</h3>
-        <p>مناسب للتجار، المطاعم، المناسبات والعائلات.</p>
-
-        <div class="bulkFacts">
-          <div><b>5+</b><span>كمية صغيرة</span></div>
-          <div><b>10+</b><span>طلب متوسط</span></div>
-          <div><b>20+</b><span>عرض خاص</span></div>
+        <div class="track">
+          <span>3</span>
+          <div><b>نأكدو معاه</b><p>السعر والتوفر والتفاصيل.</p></div>
         </div>
 
-        <button class="primaryBtn full" routerLink="/contact">
-          أطلب عرض جملة
-        </button>
-      </div>
-    </section>
-
-    <section id="faq" class="section fears">
-      <div class="sectionTitle">
-        <small>أسئلة مهمة</small>
-        <h2>قبل ما تبعث طلب.</h2>
-      </div>
-
-      <div class="fearGrid">
-        <div>
-          <span>سؤال</span>
-          <h3>هل الشراء مباشر؟</h3>
-          <p>لا. الموقع يستقبل الطلبات، والتأكيد يتم بعد مراجعة التفاصيل.</p>
-        </div>
-
-        <div>
-          <span>سؤال</span>
-          <h3>هل السعر نهائي؟</h3>
-          <p>السعر تقريبي، ويتأكد حسب الحيوان، الكمية والمنطقة.</p>
-        </div>
-
-        <div>
-          <span>سؤال</span>
-          <h3>هل نجم نطلب زيارة؟</h3>
-          <p>إي، حسب توفر العرض والمنطقة.</p>
-        </div>
+        <button class="whiteBtn" routerLink="/contact">نحب نبعث طلب</button>
       </div>
     </section>
 
     <section class="cta">
-      <h2>ابدأ من العروض المتاحة.</h2>
-      <p>
-        اختار العرض، شوف التفاصيل، وقدّم طلب رسمي قبل الشراء.
-      </p>
+      <h2>تحب تبدأ؟</h2>
+      <p>شوف العروض، اختار المناسب، وابعث طلبك بطريقة واضحة.</p>
 
       <div>
         <button routerLink="/catalogue">شوف العروض</button>
-        <button class="contact" routerLink="/contact">قدّم طلب</button>
+        <button class="contact" routerLink="/contact">ابعث طلب</button>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="footerGrid">
+      <div class="footerTop">
         <div>
-          <div class="footerBrand">
-            <img class="footerLogo" src="assets/a.png" alt="Amana logo">
-          </div>
-
+          <img class="footerLogo" src="assets/a.png" alt="Amana logo">
           <p>
-            Amana منصة تونسية لشراء المواشي بالكعبة ولا بالجملة،
-            بعروض واضحة وتجربة منظمة قبل قرار الشراء.
+            Amana منصة تونسية تساعدك تشري مواشي بطريقة أوضح:
+            عروض، معلومات، طلب رسمي، وتواصل قبل الشراء.
           </p>
         </div>
 
         <div>
-          <h4>روابط</h4>
-          <a routerLink="/catalogue">العروض</a>
-          <a routerLink="/comment-ca-marche">كيفاش تخدم؟</a>
+          <h4>الموقع</h4>
+          <a routerLink="/accueil">الرئيسية</a>
+          <a routerLink="/catalogue">شراء المواشي</a>
+          <a routerLink="/produits">معدات الفلاح</a>
           <a routerLink="/conseils-fellah">نصائح للفلاح</a>
-          <a routerLink="/produits">المعدّات</a>
-          <a routerLink="/contact">طلب رسمي</a>
         </div>
 
         <div>
           <h4>طلبات</h4>
-          <a routerLink="/contact">شراء بالكعبة</a>
-          <a routerLink="/contact">شراء بالجملة</a>
-          <a routerLink="/contact">طلب زيارة</a>
-          <a routerLink="/contact">طلب مساعدة</a>
+          <a routerLink="/contact">نحب نشري</a>
+          <a routerLink="/contact">نحب كمية</a>
+          <a routerLink="/contact">نحب نسأل</a>
+          <a routerLink="/comment-ca-marche">كيفاش تخدم؟</a>
+        </div>
+
+        <div>
+          <h4>ثقة</h4>
+          <p class="footerSmall">
+            لا دفع مباشر من الصفحة. كل طلب يتم تأكيده مع الحريف قبل أي التزام.
+          </p>
+          <button routerLink="/contact">تواصل معنا</button>
         </div>
       </div>
 
       <div class="footerBottom">
         <span>© 2026 Amana</span>
-        <span>عروض واضحة · طلب رسمي · قرار بثقة</span>
+        <span>شراء واضح · طلب رسمي · ثقة قبل القرار</span>
       </div>
     </footer>
+
+    <div class="mobileBar">
+      <button routerLink="/catalogue">🐑 العروض</button>
+      <button routerLink="/contact">📩 طلب</button>
+      <button routerLink="/comment-ca-marche">❓ الشرح</button>
+    </div>
 
     <div class="toast" *ngIf="toast">{{ toast }}</div>
   </div>
@@ -427,22 +295,33 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       --muted: #657468;
       --line: #e4ece3;
       --orange: #f5841f;
-      --shadow: 0 24px 60px rgba(10, 45, 28, .14);
+      --shadow: 0 24px 60px rgba(10,45,28,.14);
     }
 
     .page {
       min-height: 100vh;
-      background: linear-gradient(180deg, #fff8ec, #ffffff 38%, #f5fbf7);
+      background: linear-gradient(180deg, #fff8ec, #fff 40%, #f5fbf7);
       overflow-x: hidden;
+      padding-bottom: 0;
     }
 
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      transition: .22s ease;
+      font-weight: 950;
+    }
+
+    button:hover { transform: translateY(-2px); }
+
     .navbar {
-      height: 92px;
-      padding: 0 56px;
+      height: 88px;
+      padding: 0 46px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(255, 255, 255, .92);
+      background: rgba(255,255,255,.94);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid #e6eee3;
       position: sticky;
@@ -451,19 +330,15 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
     }
 
     .brand {
+      cursor: pointer;
       display: flex;
       align-items: center;
-      cursor: pointer;
-      min-width: 190px;
     }
 
     .brandLogo {
-      width: 170px;
-      height: 130px;
+      width: 160px;
+      height: 82px;
       object-fit: contain;
-      display: block;
-      transform: scale(1.08);
-      transform-origin: right center;
     }
 
     nav {
@@ -480,42 +355,15 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       background: transparent;
       color: #263d2e;
       font-size: 13px;
-      font-weight: 900;
-      padding: 11px 12px;
+      padding: 11px 13px;
       border-radius: 999px;
-      border: none;
-      cursor: pointer;
     }
 
     nav button:hover {
       background: white;
-      box-shadow: 0 8px 20px rgba(20,55,35,.08);
-      transform: none;
       color: var(--green);
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    button {
-      font-family: inherit;
-      border: none;
-      cursor: pointer;
-      transition: .22s ease;
-      font-weight: 950;
-    }
-
-    button:hover { transform: translateY(-2px); }
-
-    .navSecondary {
-      padding: 13px 18px;
-      border-radius: 15px;
-      background: white;
-      color: var(--dark);
-      border: 1px solid #dfe8dc;
+      transform: none;
+      box-shadow: 0 8px 20px rgba(20,55,35,.08);
     }
 
     .navPrimary,
@@ -531,20 +379,20 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       padding: 14px 22px;
       border-radius: 16px;
       color: var(--dark);
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(10,70,40,.22);
+      background: white;
+      border: 1px solid rgba(10,70,40,.18);
     }
 
     .big {
       padding: 18px 26px;
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .hero {
-      min-height: calc(100vh - 92px);
+      min-height: calc(100vh - 88px);
       padding: 42px 56px 58px;
       display: grid;
-      grid-template-columns: 1.02fr .98fr;
+      grid-template-columns: 1fr 1fr;
       gap: 54px;
       align-items: center;
       background:
@@ -553,10 +401,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
         linear-gradient(135deg, #fff7e9, #fff 70%);
     }
 
-    .heroText {
-      text-align: right;
-      direction: rtl;
-    }
+    .heroText { text-align: right; }
 
     .heroBadge {
       display: inline-flex;
@@ -569,7 +414,6 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       font-size: 14px;
       font-weight: 950;
       margin-bottom: 22px;
-      line-height: 1.6;
     }
 
     .heroBadge span {
@@ -578,20 +422,19 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       border-radius: 50%;
       background: var(--green2);
       animation: pulse 1.8s infinite;
-      flex-shrink: 0;
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
+      0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.7); opacity: .45; }
     }
 
     .hero h1 {
       margin: 0;
-      max-width: 800px;
-      font-size: clamp(42px, 5.4vw, 70px);
-      line-height: 1.04;
-      letter-spacing: -2px;
+      max-width: 820px;
+      font-size: clamp(40px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -1.8px;
       color: var(--dark);
       font-weight: 950;
     }
@@ -603,51 +446,31 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
 
     .hero p {
       margin: 24px 0 30px;
-      max-width: 660px;
+      max-width: 650px;
       color: #2b4636;
       font-size: 18px;
       line-height: 1.8;
     }
 
     .heroActions,
-    .quickChoice,
-    .proofLine {
+    .simpleChoices {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      justify-content: flex-start;
     }
 
-    .quickChoice { margin-top: 20px; }
+    .simpleChoices {
+      margin-top: 18px;
+    }
 
-    .quickChoice button {
-      padding: 14px 18px;
+    .simpleChoices button {
+      padding: 13px 16px;
       border-radius: 16px;
       background: white;
       color: var(--dark);
       border: 1px solid #e5ece3;
       box-shadow: 0 10px 22px rgba(20,55,35,.06);
     }
-
-    .quickChoice button:hover {
-      background: #eaf8ef;
-      color: var(--green);
-    }
-
-    .proofLine { margin-top: 22px; }
-
-    .proofLine div {
-      padding: 10px 13px;
-      border-radius: 999px;
-      background: white;
-      border: 1px solid #e5ece3;
-      color: #31513c;
-      font-size: 13px;
-      font-weight: 900;
-      box-shadow: 0 10px 22px rgba(20,55,35,.06);
-    }
-
-    .heroVisual { position: relative; }
 
     .animalHeroCard {
       position: relative;
@@ -662,50 +485,34 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       height: 520px;
       object-fit: cover;
       display: block;
-      transition: .65s;
     }
-
-    .animalHeroCard:hover img { transform: scale(1.06); }
 
     .heroAnimalInfo {
       position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 28px;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
       padding: 24px;
       border-radius: 28px;
       background: rgba(255,255,255,.94);
       backdrop-filter: blur(14px);
       text-align: right;
-      direction: rtl;
     }
 
-    .animalStatus {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .animalStatus span {
+    .pill {
+      display: inline-block;
       padding: 7px 12px;
       border-radius: 999px;
       background: #e9f7ee;
       color: var(--green);
       font-size: 12px;
       font-weight: 950;
-    }
-
-    .animalStatus small {
-      color: var(--muted);
-      font-weight: 850;
+      margin-bottom: 12px;
     }
 
     .heroAnimalInfo h3 {
       margin: 0 0 7px;
       font-size: 25px;
-      letter-spacing: -.5px;
     }
 
     .heroAnimalInfo p {
@@ -725,8 +532,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
     .animalPrice b {
       display: block;
       color: var(--green);
-      font-size: 30px;
-      line-height: 1;
+      font-size: 29px;
     }
 
     .animalPrice span {
@@ -740,56 +546,26 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       border-radius: 15px;
       background: var(--orange);
       color: white;
-      white-space: nowrap;
-    }
-
-    .floatingCard {
-      position: absolute;
-      z-index: 2;
-      padding: 14px 16px;
-      border-radius: 19px;
-      background: white;
-      box-shadow: var(--shadow);
-      display: grid;
-      gap: 3px;
-      animation: float 3s ease-in-out infinite;
-      text-align: right;
-    }
-
-    .floatingCard b {
-      color: var(--dark);
-      font-size: 14px;
-    }
-
-    .floatingCard span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .floatingCard.top { top: -26px; left: -22px; }
-    .floatingCard.bottom { bottom: 130px; left: -42px; animation-delay: .7s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
 
     .trustStrip {
       max-width: 1180px;
       margin: -35px auto 12px;
       padding: 0 18px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 10px;
       position: relative;
       z-index: 5;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      direction: rtl;
     }
 
     .trustStrip div,
+    .step,
     .valueGrid div,
-    .educationCards div {
+    .educationCards div,
+    .animalCard,
+    .fearGrid div,
+    .bulkCard {
       background: white;
       border: 1px solid #e5ece3;
       box-shadow: 0 14px 34px rgba(20,55,35,.09);
@@ -797,48 +573,40 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
     }
 
     .trustStrip div {
-      min-height: 104px;
       border-radius: 22px;
       padding: 17px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      min-height: 104px;
     }
 
     .trustStrip b {
       display: block;
       margin-bottom: 6px;
       color: var(--dark);
-      line-height: 1.3;
-      font-size: 14px;
     }
 
     .trustStrip span {
       color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.55;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .section,
     .valueSection {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 60px 30px;
+      padding: 64px 30px;
     }
 
     .sectionTitle {
       max-width: 780px;
       margin: 0 auto 42px;
       text-align: center;
-      direction: rtl;
     }
 
     small {
       color: var(--green);
       font-size: 13px;
       font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .7px;
     }
 
     .sectionTitle h2,
@@ -851,7 +619,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       color: var(--dark);
       font-size: clamp(30px, 4vw, 44px);
       line-height: 1.13;
-      letter-spacing: -1.3px;
+      letter-spacing: -1.1px;
     }
 
     .sectionTitle p,
@@ -864,71 +632,32 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       line-height: 1.7;
     }
 
+    .steps,
     .valueGrid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4,1fr);
       gap: 18px;
-    }
-
-    .valueGrid div {
-      border-radius: 26px;
-      padding: 24px;
-    }
-
-    .valueGrid span {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border-radius: 20px;
-      background: var(--cream);
-      font-size: 28px;
-      margin-bottom: 14px;
-    }
-
-    .valueGrid h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-    }
-
-    .valueGrid p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      direction: rtl;
     }
 
     .step,
-    .bulkCard {
-      background: white;
-      border: 1px solid #edf1e9;
+    .valueGrid div {
       border-radius: 26px;
       padding: 24px;
-      box-shadow: 0 14px 34px rgba(35,65,45,.08);
-      text-align: right;
-    }
-
-    .step {
       position: relative;
       overflow: hidden;
     }
 
     .step strong {
       position: absolute;
-      top: 16px;
+      top: 14px;
       left: 18px;
       font-size: 48px;
       color: rgba(15,107,62,.08);
       font-weight: 950;
     }
 
-    .stepIcon {
+    .stepIcon,
+    .valueGrid span {
       width: 58px;
       height: 58px;
       display: grid;
@@ -939,30 +668,42 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       margin-bottom: 16px;
     }
 
-    .step h3 {
+    .step h3,
+    .valueGrid h3 {
       margin: 0 0 10px;
       font-size: 21px;
     }
 
-    .step p {
+    .step p,
+    .valueGrid p {
       margin: 0;
       color: var(--muted);
       line-height: 1.6;
       font-size: 14px;
     }
 
-    .categorySection { background: #f7fbf7; }
+    .categorySection {
+      background: #f7fbf7;
+    }
 
     .centerHeader {
       justify-content: center !important;
       text-align: center !important;
     }
 
+    .sectionHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 30px;
+      text-align: right;
+    }
+
     .categories {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5,1fr);
       gap: 14px;
-      direction: rtl;
     }
 
     .categories button {
@@ -972,67 +713,31 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       color: var(--dark);
       border: 1px solid var(--line);
       box-shadow: 0 12px 28px rgba(35,65,45,.08);
-      font-size: 19px;
-    }
-
-    .categories button:hover {
-      background: #eaf8ef;
-      color: var(--green);
+      font-size: 18px;
     }
 
     .animalsSection {
-      background: linear-gradient(180deg, #f5fbf7, #fdfaf4);
-    }
-
-    .inner {
-      padding-top: 76px;
-      padding-bottom: 76px;
-    }
-
-    .sectionHeader {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 24px;
-      margin-bottom: 30px;
-      direction: rtl;
-      text-align: right;
-    }
-
-    .sectionHeader > div { max-width: 760px; }
-
-    .darkBtn {
-      padding: 15px 22px;
-      border-radius: 16px;
-      background: var(--dark);
-      color: white;
-      box-shadow: 0 16px 30px rgba(5,45,28,.18);
-      white-space: nowrap;
+      background: linear-gradient(180deg,#f5fbf7,#fdfaf4);
     }
 
     .animals {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4,1fr);
       gap: 18px;
-      direction: rtl;
     }
 
     .animalCard {
-      background: white;
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid #edf1e9;
-      box-shadow: 0 14px 30px rgba(35,65,45,.09);
       transition: .25s;
     }
 
     .animalCard:hover {
       transform: translateY(-8px);
-      box-shadow: 0 26px 54px rgba(35,65,45,.15);
     }
 
     .imgBox {
-      height: 188px;
+      height: 190px;
       position: relative;
       overflow: hidden;
     }
@@ -1041,10 +746,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: .55s;
     }
-
-    .animalCard:hover .imgBox img { transform: scale(1.07); }
 
     .imgBox span {
       position: absolute;
@@ -1056,23 +758,6 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       padding: 7px 11px;
       font-size: 11px;
       font-weight: 950;
-    }
-
-    .heart {
-      position: absolute;
-      left: 12px;
-      top: 12px;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.94);
-      color: var(--green);
-      font-size: 21px;
-    }
-
-    .heart.liked {
-      background: #ffe8e8;
-      color: #d92020;
     }
 
     .cardBody {
@@ -1088,7 +773,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
 
     .animalMiniInfo {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 8px;
       margin-bottom: 12px;
     }
@@ -1125,11 +810,10 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       font-size: 12px;
     }
 
-    .statusLine small { color: var(--muted); }
-
-    .detailsBtn {
+    .detailsBtn,
+    .darkBtn {
       width: 100%;
-      padding: 13px;
+      padding: 14px;
       border-radius: 15px;
       background: var(--dark);
       color: white;
@@ -1146,21 +830,12 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       grid-template-columns: .9fr 1.1fr;
       gap: 24px;
       align-items: center;
-      direction: rtl;
       box-shadow: 0 14px 34px rgba(35,65,45,.08);
-    }
-
-    .educationText {
-      text-align: right;
-    }
-
-    .educationText p {
-      margin-bottom: 18px;
     }
 
     .educationCards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 14px;
     }
 
@@ -1185,10 +860,9 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
     .trustSection,
     .bulkSection {
       display: grid;
-      grid-template-columns: 1.08fr .82fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 44px;
       align-items: center;
-      direction: rtl;
       text-align: right;
     }
 
@@ -1207,12 +881,10 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       font-size: 14px;
     }
 
-    .trustBtn { margin-top: 18px; }
-
     .trackingBox {
       padding: 32px;
       border-radius: 34px;
-      background: linear-gradient(180deg, #0c5030, #07351f);
+      background: linear-gradient(180deg,#0c5030,#07351f);
       color: white;
       box-shadow: var(--shadow);
     }
@@ -1239,8 +911,9 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       place-items: center;
       border-radius: 15px;
       background: rgba(255,255,255,.16);
-      font-size: 22px;
+      font-size: 20px;
       flex-shrink: 0;
+      font-weight: 950;
     }
 
     .track b,
@@ -1261,7 +934,11 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       margin-top: 8px;
     }
 
-    .bulkCard { text-align: center; }
+    .bulkCard {
+      border-radius: 26px;
+      padding: 24px;
+      text-align: center;
+    }
 
     .bulkIcon {
       width: 70px;
@@ -1274,20 +951,10 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       font-size: 34px;
     }
 
-    .bulkCard h3 {
-      font-size: 27px;
-      margin-bottom: 10px;
-    }
-
-    .bulkCard p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
     .bulkFacts {
       margin: 22px 0;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 10px;
     }
 
@@ -1298,18 +965,6 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       border: 1px solid var(--line);
     }
 
-    .bulkFacts b {
-      display: block;
-      color: var(--green);
-      font-size: 24px;
-    }
-
-    .bulkFacts span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
     .full {
       width: 100%;
       padding: 16px;
@@ -1317,18 +972,13 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
 
     .fearGrid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 22px;
-      direction: rtl;
     }
 
     .fearGrid div {
-      padding: 26px;
       border-radius: 26px;
-      background: white;
-      border: 1px solid #edf1e9;
-      box-shadow: 0 16px 35px rgba(35,65,45,.08);
-      text-align: right;
+      padding: 26px;
     }
 
     .fearGrid span {
@@ -1342,20 +992,6 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       font-weight: 950;
     }
 
-    .fearGrid h3 {
-      margin: 0 0 12px;
-      color: var(--dark);
-      font-size: 21px;
-      line-height: 1.25;
-    }
-
-    .fearGrid p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
     .cta {
       max-width: 1180px;
       margin: 45px auto 80px;
@@ -1363,9 +999,8 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       border-radius: 36px;
       text-align: center;
       color: white;
-      direction: rtl;
       background:
-        linear-gradient(135deg, rgba(5,50,31,.96), rgba(14,120,66,.83)),
+        linear-gradient(135deg,rgba(5,50,31,.96),rgba(14,120,66,.83)),
         url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=80');
       background-size: cover;
       background-position: center;
@@ -1374,8 +1009,6 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
 
     .cta h2 {
       color: white;
-      max-width: 760px;
-      margin: auto;
     }
 
     .cta p {
@@ -1401,48 +1034,61 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
     }
 
     .footer {
-      padding: 58px 56px 26px;
+      padding: 62px 56px 26px;
       background:
-        radial-gradient(circle at 15% 10%, rgba(21,164,90,.22), transparent 28%),
-        linear-gradient(180deg, #083923, #03180f);
+        radial-gradient(circle at 18% 10%, rgba(21,164,90,.24), transparent 30%),
+        linear-gradient(180deg,#083923,#03180f);
       color: white;
-      direction: rtl;
     }
 
-    .footerGrid {
+    .footerTop {
       display: grid;
-      grid-template-columns: 1.5fr .7fr .7fr;
-      gap: 44px;
+      grid-template-columns: 1.5fr .7fr .7fr .8fr;
+      gap: 38px;
       padding-bottom: 34px;
     }
 
-    .footerBrand {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
     .footerLogo {
-      width: 220px;
+      width: 210px;
       height: 88px;
       object-fit: contain;
-      display: block;
     }
 
     .footer p {
       max-width: 500px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: rgba(255,255,255,.68);
     }
 
-    .footer h4 { margin: 0 0 16px; }
+    .footer h4 {
+      margin: 0 0 16px;
+      color: white;
+      font-size: 18px;
+    }
 
     .footer a {
       display: block;
-      color: rgba(255,255,255,.7);
-      margin-bottom: 10px;
+      color: rgba(255,255,255,.72);
+      margin-bottom: 11px;
       text-decoration: none;
       cursor: pointer;
+      font-weight: 750;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .footerSmall {
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .footer button {
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: var(--orange);
+      color: white;
     }
 
     .footerBottom {
@@ -1454,6 +1100,10 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       font-size: 13px;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    .mobileBar {
+      display: none;
     }
 
     .toast {
@@ -1490,8 +1140,7 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       }
 
       .heroActions,
-      .proofLine,
-      .quickChoice {
+      .simpleChoices {
         justify-content: center;
       }
 
@@ -1502,60 +1151,70 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       .fearGrid,
       .valueGrid,
       .educationCards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
 
-      .footerGrid {
-        grid-template-columns: 1fr;
+      .footerTop {
+        grid-template-columns: repeat(2,1fr);
       }
     }
 
     @media (max-width: 720px) {
-      .navbar {
-        height: auto;
-        padding: 14px 18px;
+      .page {
+        padding-bottom: 78px;
       }
 
-      .actions { display: none; }
-
-      .brand { min-width: 150px; }
+      .navbar {
+        height: 74px;
+        padding: 10px 16px;
+      }
 
       .brandLogo {
-        width: 155px;
+        width: 132px;
         height: 58px;
-        transform: scale(1.08);
+      }
+
+      .navPrimary {
+        padding: 12px 15px;
+        font-size: 13px;
       }
 
       .hero {
-        padding: 34px 18px 60px;
+        padding: 28px 18px 48px;
         min-height: auto;
+        gap: 28px;
       }
 
       .hero h1 {
-        font-size: 37px;
+        font-size: 34px;
         letter-spacing: -1px;
       }
 
-      .hero p { font-size: 16px; }
+      .hero p {
+        font-size: 16px;
+        line-height: 1.75;
+      }
 
       .heroActions,
-      .quickChoice {
+      .simpleChoices {
         flex-direction: column;
       }
 
       .heroActions button,
-      .quickChoice button {
+      .simpleChoices button {
         width: 100%;
       }
 
-      .proofLine div {
-        width: 100%;
-        text-align: center;
+      .animalHeroCard img {
+        height: 390px;
       }
 
-      .animalHeroCard img { height: 410px; }
-
-      .floatingCard { display: none; }
+      .heroAnimalInfo {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 18px;
+      }
 
       .animalPrice {
         flex-direction: column;
@@ -1564,19 +1223,11 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
 
       .section,
       .valueSection {
-        padding: 54px 18px;
+        padding: 50px 18px;
       }
 
-      .educationMini {
-        margin: 28px 18px;
-        padding: 24px;
-      }
-
-      .sectionHeader { display: block; }
-
-      .darkBtn {
-        width: 100%;
-        margin-top: 18px;
+      .sectionHeader {
+        display: block;
       }
 
       .animals,
@@ -1586,26 +1237,63 @@ type AnimalType = 'Mouton' | 'Brebis' | 'Goat' | 'Cow';
       .bulkFacts,
       .categories,
       .valueGrid,
-      .educationCards {
+      .educationCards,
+      .footerTop {
         grid-template-columns: 1fr;
       }
 
-      .trustStrip { margin-top: 24px; }
+      .trustStrip {
+        margin-top: 22px;
+      }
 
-      .imgBox { height: 230px; }
-
+      .educationMini,
       .cta {
-        margin: 35px 18px 60px;
-        padding: 44px 20px;
+        margin-left: 18px;
+        margin-right: 18px;
+        padding: 28px 20px;
+      }
+
+      .imgBox {
+        height: 230px;
       }
 
       .footer {
-        padding: 44px 20px 24px;
+        padding: 44px 20px 28px;
       }
 
       .footerLogo {
-        width: 170px;
-        height: 70px;
+        width: 165px;
+        height: 68px;
+      }
+
+      .footerBottom {
+        display: grid;
+        gap: 6px;
+      }
+
+      .mobileBar {
+        position: fixed;
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        z-index: 200;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 8px;
+        padding: 10px;
+        border-radius: 24px;
+        background: rgba(255,255,255,.94);
+        backdrop-filter: blur(18px);
+        border: 1px solid #dfe8dc;
+        box-shadow: 0 18px 40px rgba(5,45,28,.18);
+      }
+
+      .mobileBar button {
+        padding: 12px 8px;
+        border-radius: 16px;
+        background: #0f6b3e;
+        color: white;
+        font-size: 13px;
       }
     }
   `]
@@ -1619,23 +1307,23 @@ export class AccueilComponent {
   steps = [
     {
       icon: '🔎',
-      title: 'شوف العرض',
-      text: 'صور، وزن، عمر، منطقة وسعر تقريبي.'
+      title: 'شوف العروض',
+      text: 'تشوف الصور، الوزن، العمر، المنطقة والسعر.'
     },
     {
       icon: '🐑',
       title: 'اختار المناسب',
-      text: 'كعبة، جملة، أو زيارة قبل الشراء.'
+      text: 'علوش، نعجة، بقرة، كعبة ولا كمية.'
     },
     {
       icon: '📩',
       title: 'ابعث طلب',
-      text: 'طلب رسمي بدون دفع مباشر.'
+      text: 'تخلي اسمك، تليفونك والولاية.'
     },
     {
       icon: '✅',
-      title: 'أكد التفاصيل',
-      text: 'نراجعو التوفر والسعر والمنطقة، وبعدها تقرر براحتك.'
+      title: 'نأكدو معاك',
+      text: 'نراجعو التوفر والسعر قبل القرار.'
     }
   ];
 
@@ -1649,8 +1337,7 @@ export class AccueilComponent {
       age: '8 أشهر',
       region: 'سيدي بوزيد',
       price: 850,
-      badge: 'عرض متاح',
-      liked: false
+      badge: 'متاح'
     },
     {
       id: 2,
@@ -1661,8 +1348,7 @@ export class AccueilComponent {
       age: '7 أشهر',
       region: 'القيروان',
       price: 760,
-      badge: 'سعر مناسب',
-      liked: false
+      badge: 'سعر مناسب'
     },
     {
       id: 3,
@@ -1673,8 +1359,7 @@ export class AccueilComponent {
       age: '10 أشهر',
       region: 'باجة',
       price: 690,
-      badge: 'زيارة متاحة',
-      liked: false
+      badge: 'زيارة ممكنة'
     },
     {
       id: 4,
@@ -1685,8 +1370,7 @@ export class AccueilComponent {
       age: '3 سنوات',
       region: 'نابل',
       price: 5200,
-      badge: 'عرض خاص',
-      liked: false
+      badge: 'عرض خاص'
     }
   ];
 
@@ -1699,11 +1383,6 @@ export class AccueilComponent {
       behavior: 'smooth',
       block: 'start'
     });
-  }
-
-  toggleLike(animal: any) {
-    animal.liked = !animal.liked;
-    this.showToast(animal.liked ? 'تزاد للمفضلة ❤️' : 'تنحّى من المفضلة');
   }
 
   selectAnimal(animal: any) {
